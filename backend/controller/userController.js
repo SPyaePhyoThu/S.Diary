@@ -3,7 +3,6 @@ const sharp = require("sharp");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
 const AppError = require("../util/appError");
-const path = require("path");
 
 exports.getAllUsers = catchAsync(async (req, res) => {
   const users = await User.find();
