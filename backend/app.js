@@ -13,6 +13,9 @@ const app = express();
 //serving static files from the backend
 app.use("/static", express.static(path.join(__dirname, "public")));
 
+//trust the first hop
+app.set("trust proxy", 1);
+
 // limiting api request
 const limiter = rateLimit({
   max: 500,
