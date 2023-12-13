@@ -4,7 +4,7 @@
 }
 .emptyCalendar{
     position: relative;
-    left: 1rem;
+    left: 2rem;
 
 }
 .date{
@@ -15,14 +15,14 @@
     left: 3.6rem;
 
 }
-@media (max-width : 450px){
-   .emptyCalendar{
-    transform: scale(0.8);
-   }
-   .date{
-
-    top: 3rem;
-
-
+@media (max-width : 1025px){
+    .emptyCalendar{
+        transform: scale(0.8);
+        left: 1rem;
+       }
 }
+@media (max-width : 450px){
+   .date{
+    top: 3rem;
+    }
 }
