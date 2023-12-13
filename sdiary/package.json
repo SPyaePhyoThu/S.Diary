@@ -6,7 +6,6 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.11",
     "@natscale/react-calendar": "^0.0.0-beta.26",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
