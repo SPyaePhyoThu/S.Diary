@@ -1,0 +1,5 @@
+.foot{
+    display: grid;
+    font-size: 1.2rem;
+    justify-items: center;
+}

@@ -1,13 +1,36 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'PT Serif', serif;
+  /* font-family: 'My Soul', cursive; */
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Croissant+One&family=Merriweather:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=My+Soul&family=PT+Serif&display=swap');
+:root{
+  --first--color : #E0DFD5;
+  --second--color : #E8E9EB;
+  --third--color : #E4B363;
+  --fourth--color : #EF6461;
+  --fifth--color : #313638;
+}
+
+
+html{
+  font-size: 62.5%; /*10px*/
+  color: var(--fifth--color);
+  box-sizing: border-box;
+  cursor: context-menu;
+}
+
+@media (max-width : 1025px) {
+  html{
+  font-size: 50%;
+}
 }
