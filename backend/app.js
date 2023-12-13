@@ -40,6 +40,15 @@ app.get("/api/v1/userphoto/:filename", (req, res) => {
   res.sendFile(path.join(__dirname, "public/img/users", filename));
 });
 
+//favicon
+app.use(function (req, res, next) {
+  if (req.originalUrl && req.originalUrl.split("/").pop() === "favicon.ico") {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
+
 //error for unknown routes
 app.all("*", (req, res, next) => {
   res.status(404).json({
