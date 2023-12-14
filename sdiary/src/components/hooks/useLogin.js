@@ -40,23 +40,29 @@ export const useLogin = () => {
   };
 
   const forgotPassword = async (email) => {
-    const response = await fetch("/api/v1/user/forgotPassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email }),
-    });
+    try {
+      const response = await fetch(
+        "https://s-diary-frontend.vercel.app/api/v1/user/forgotPassword",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        }
+      );
 
-    const json = await response.json();
-
-    if (!response.ok) {
-      setIsLoading(false);
-      setError(json.error.message);
-    }
-    if (response.ok) {
-      setError(json.message);
-      setIsLoading(false);
+      if (!response.ok) {
+        const json = await response.json();
+        setIsLoading(false);
+        setError(json.error.message);
+      } else {
+        const json = await response.json();
+        setError(json.message);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
