@@ -13,6 +13,16 @@ const app = express();
 
 // Allow all origins
 app.use(cors());
+
+const allowedOrigins = ["https://s-diary-frontend.vercel.app"];
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
+
 app.options("*", cors());
 
 // Set the view engine to EJS
