@@ -1,5 +1,4 @@
 const multer = require("multer");
-const sharp = require("sharp");
 const gm = require("gm");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
