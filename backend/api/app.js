@@ -70,6 +70,13 @@ app.use(function (req, res, next) {
 
   next();
 });
+app.use((req, res, next) => {
+  const methods = router.stack
+    // Filter for the route that matches the currently matched route
+    .filter((layer) => layer.route.path === req.path)[0].route.methods;
+  if (!methods[req.method]) methodNotAllowed(req, res, next);
+  else next();
+});
 
 //error for unknown routes
 app.all("*", (req, res, next) => {
