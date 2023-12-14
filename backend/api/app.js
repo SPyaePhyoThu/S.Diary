@@ -14,7 +14,7 @@ const app = express();
 // Allow all origins
 app.use(cors());
 
-const allowedOrigins = ["https://s-diary-frontend.vercel.app"];
+const allowedOrigins = [`https://s-diary-frontend.vercel.app`];
 app.use(
   cors({
     origin: allowedOrigins,
