@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const diaryController = require("../../server/controller/diaryController");
-const authController = require("../../server/controller/authController");
+const diaryController = require("../controller/diaryController");
+const authController = require("../controller/authController");
 
 router.use(authController.protect);
 router.get("/MomentOfTheMonth", diaryController.getMomentsOfTheMonth);

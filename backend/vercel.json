@@ -5,7 +5,7 @@
         { "src": "public/html/ResetPasswordPage.html", "use": "@vercel/static" },
         { "src": "public/html/img", "use": "@vercel/static" },
         {
-            "src": "server/index.js",
+            "src": "api/index.js",
             "use": "@vercel/node"
         }
     ],
@@ -15,7 +15,7 @@
     },
         {
             "src": "/(.*)",
-            "dest": "server/index.js"
+            "dest": "api/index.js"
         }
     ]
 }
