@@ -17,20 +17,20 @@ export const useSignup = () => {
         },
         body: JSON.stringify({ name, email, password, passwordConfirm, dates }),
       });
-      const json = await response.json();
 
       if (!response.ok) {
+        const json = await response.json();
         setIsLoading(false);
         setError(json.message);
-      }
-      if (response.ok) {
+      } else {
+        const json = await response.json();
         localStorage.setItem("user", JSON.stringify(json));
 
         dispatch({ type: "LOGIN", payload: json });
         setIsLoading(false);
       }
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
   return { signUp, isLoading, error };

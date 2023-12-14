@@ -12,7 +12,7 @@ export const useLogin = () => {
 
     try {
       const response = await fetch(
-        "https://s-diary-frontend.vercel.app/api/v1/user/login",
+        "https://s-diary-backend.vercel.app/api/v1/user/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ export const useLogin = () => {
   const forgotPassword = async (email) => {
     try {
       const response = await fetch(
-        "https://s-diary-frontend.vercel.app/api/v1/user/forgotPassword",
+        "https://s-diary-backend.vercel.app/api/v1/user/forgotPassword",
         {
           method: "POST",
           headers: {
