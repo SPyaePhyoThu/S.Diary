@@ -1,4 +1,5 @@
 {
+  "proxy": "https://s-diary-backend.vercel.app",
   "name": "sdiary",
   "version": "0.1.0",
   "private": true,

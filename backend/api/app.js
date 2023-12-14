@@ -11,6 +11,10 @@ const cors = require("cors");
 //express app
 const app = express();
 
+// Set the view engine to EJS
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 // Allow all origins
 app.use(cors());
 
@@ -23,10 +27,6 @@ app.use(
 );
 
 app.options("*", cors());
-
-// Set the view engine to EJS
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 //serving static files from the backend
 app.use("/static", express.static(path.join(__dirname, "public")));
