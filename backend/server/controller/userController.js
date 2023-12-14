@@ -1,5 +1,6 @@
 const multer = require("multer");
 const sharp = require("sharp");
+const gm = require("gm");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
 const AppError = require("../util/appError");
@@ -99,7 +100,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-  await sharp(req.file.buffer)
+  await gm(req.file.buffer)
     .resize(500, 500)
     .toFormat("jpeg")
     .jpeg({ quality: 90 })
