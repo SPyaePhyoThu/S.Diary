@@ -3,7 +3,7 @@ const catchAsync = require("../util/catchAsync");
 const AppError = require("../util/appError");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
-const Email = require("../util/email/email");
+const Email = require("../util/email");
 const crypto = require("crypto");
 
 const signToken = (id) =>
@@ -153,6 +153,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     const resetURL = `${req.protocol}://${req.get(
       "host"
     )}/api/v1/user/resetPasswordPage/${resetToken}`;
+
     await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({

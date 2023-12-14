@@ -10,6 +10,9 @@ const cookieParser = require("cookie-parser");
 //express app
 const app = express();
 
+// Set the view engine to EJS
+app.set("view engine", "ejs");
+
 //serving static files from the backend
 app.use("/static", express.static(path.join(__dirname, "public")));
 
@@ -40,7 +43,7 @@ app.use("/api/v1/diary", diaryRoutes);
 app.use("/api/v1/user", userRoutes);
 app.get("/api/v1/userphoto/:filename", (req, res) => {
   const filename = req.params.filename;
-  res.sendFile(path.join(__dirname, "public/img/users", filename));
+  res.sendFile(path.join(__dirname, "../public/img/users", filename));
 });
 
 //favicon
