@@ -11,16 +11,13 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        "https://s-diary-backend.vercel.app/api/v1/user/login",
-        {
-          method: "POST",
-          mode: "cors",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch("/api/v1/user/login", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
       const json = await response.json();
 
       if (role) {
