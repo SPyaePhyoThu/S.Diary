@@ -34,7 +34,7 @@ const sendErrorDev = (error, req, res) => {
     });
   } else
     res.status(error.statusCode).render("error", {
-      title: "Something went worng",
+      title: "Something went wrong",
       msg: error.message,
     });
 };
