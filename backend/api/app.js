@@ -43,9 +43,9 @@ const limiter = rateLimit({
 });
 app.use("/api", limiter);
 
-app.get("/api/v1/user/resetPasswordPage/:resetToken", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "ResetPasswordPage.html"));
-});
+// app.get("/api/v1/user/resetPasswordPage/:resetToken", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "ResetPasswordPage.html"));
+// });
 
 //body parser
 app.use(express.json({ limit: "10kb" }));

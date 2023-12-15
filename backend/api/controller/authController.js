@@ -171,31 +171,31 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     );
   }
 });
-exports.resetPassword = catchAsync(async (req, res, next) => {
-  // get user base on token
-  const hashtoken = crypto
-    .createHash("sha256")
-    .update(req.params.token)
-    .digest("hex");
+// exports.resetPassword = catchAsync(async (req, res, next) => {
+//   // get user base on token
+//   const hashtoken = crypto
+//     .createHash("sha256")
+//     .update(req.params.token)
+//     .digest("hex");
 
-  // if token not expired , and there is a user ,set new password
-  const user = await User.findOne({
-    passwordResetToken: hashtoken,
-    passwordResetExpires: { $gt: Date.now() },
-  });
+//   // if token not expired , and there is a user ,set new password
+//   const user = await User.findOne({
+//     passwordResetToken: hashtoken,
+//     passwordResetExpires: { $gt: Date.now() },
+//   });
 
-  if (!user) {
-    return next(new AppError("Token is invalid or has expired", 400));
-  }
-  user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
-  user.passwordResetToken = undefined;
-  user.passwordResetExpires = undefined;
-  await user.save();
+//   if (!user) {
+//     return next(new AppError("Token is invalid or has expired", 400));
+//   }
+//   user.password = req.body.password;
+//   user.passwordConfirm = req.body.passwordConfirm;
+//   user.passwordResetToken = undefined;
+//   user.passwordResetExpires = undefined;
+//   await user.save();
 
-  //Log the user in , send JWT
-  createSendToken(user, 200, res);
-});
+//   //Log the user in , send JWT
+//   createSendToken(user, 200, res);
+// });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   //1) get user from the collection
