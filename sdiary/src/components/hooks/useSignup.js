@@ -10,20 +10,23 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("/api/v1/user/signup", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          passwordConfirm,
-          dates,
-        }),
-      });
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/signup",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            passwordConfirm,
+            dates,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const json = await response.json();
