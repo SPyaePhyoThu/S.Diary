@@ -51,5 +51,8 @@
     "express-rate-limit": "^7.1.5",
     "nodemon": "^3.0.2",
     "promisify": "^0.0.3"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
