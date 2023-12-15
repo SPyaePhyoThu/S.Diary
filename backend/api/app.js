@@ -15,6 +15,8 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(cors());
+
 // Allow all origins
 app.use((req, res, next) => {
   // Set the necessary CORS headers
@@ -26,7 +28,7 @@ app.use((req, res, next) => {
 app.use(
   cors({
     origin: "https://s-diary-frontend.vercel.app",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: "GET,HEAD,PATCH,POST,DELETE",
     credentials: true,
   })
 );
@@ -60,7 +62,7 @@ app.use((req, res, next) => {
 });
 //routes
 app.use("/api/v1/diary", diaryRoutes);
-app.use("/api/v1/user", userRoutes);
+app.use("https://s-diary-frontend.vercel.app/api/v1/user", userRoutes);
 app.get("/api/v1/userphoto/:filename", (req, res) => {
   const filename = req.params.filename;
   res.sendFile(path.join(__dirname, "../public/img/users", filename));
