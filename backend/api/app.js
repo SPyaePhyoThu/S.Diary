@@ -43,9 +43,10 @@ const limiter = rateLimit({
 });
 app.use("/api", limiter);
 
-// app.get("/api/v1/user/resetPasswordPage/:resetToken", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "ResetPasswordPage.html"));
-// });
+app.get("/api/v1/user/resetPasswordPage/:resetToken", (req, res) => {
+  const resetToken = req.params.resetToken;
+  res.render("resetPasswordPage", { resetToken });
+});
 
 //body parser
 app.use(express.json({ limit: "10kb" }));
@@ -65,9 +66,7 @@ app.use(xss());
 app.get("/", (req, res) => {
   res.render("landingPage");
 });
-// app.use((req, res) => {
-//   res.status(404).render("404Page");
-// });
+
 app.use("/api/v1/diary", diaryRoutes);
 app.use("/api/v1/user", userRoutes);
 app.get("/api/v1/userphoto/:filename", (req, res) => {
@@ -86,14 +85,6 @@ app.use(function (req, res, next) {
 
 //error for unknown routes
 app.all("*", (req, res, next) => {
-  // res.status(404).json({
-  //   status: "fail",
-  //   message: `Cant find ${req.originalUrl} on this server!`,
-  // });
-  // const err = new Error(`Cant find ${req.originalUrl} on this server!`);
-  // err.status = "fail";
-  // err.statusCode = 404;
-
   next(new AppError(`Cant find ${req.originalUrl} on this server!`, 404));
 });
 
