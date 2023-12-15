@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const diaryRoutes = require("./routes/diariesRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -6,7 +7,6 @@ const globalErrorHandler = require("./controller/errorController");
 const rateLimit = require("express-rate-limit");
 const AppError = require("./util/appError");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
 
 //express app
 const app = express();

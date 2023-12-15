@@ -15,6 +15,8 @@ export const useLogin = () => {
         "https://s-diary-backend.vercel.app/api/v1/user/login",
         {
           method: "POST",
+          mode: "cors",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
         }
@@ -45,6 +47,8 @@ export const useLogin = () => {
         "https://s-diary-backend.vercel.app/api/v1/user/forgotPassword",
         {
           method: "POST",
+          mode: "cors",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
