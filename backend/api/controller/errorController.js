@@ -24,7 +24,7 @@ const handleJWTError = () =>
 const handleTokenExpError = () =>
   new AppError("Token has expired , please log in again", 401);
 
-const sendError = (error, req, res) => {
+const sendErrorDev = (error, req, res) => {
   if (req.originalUrl.startsWith("/api")) {
     res.status(error.statusCode).json({
       status: error.status,
@@ -38,19 +38,58 @@ const sendError = (error, req, res) => {
       msg: error.message,
     });
 };
+const sendErrorPro = (err, req, res) => {
+  // A) API
+  if (req.originalUrl.startsWith("/api")) {
+    // A) Operational, trusted error: send message to client
+    if (err.isOperational) {
+      return res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
+      });
+    }
+    // B) Programming or other unknown error: don't leak error details
+    // 1) Log error
+    console.error("ERROR 💥", err);
+    // 2) Send generic message
+    return res.status(500).json({
+      status: "error",
+      message: "Something went very wrong!",
+    });
+  }
+  if (err.isOperational) {
+    console.log(err);
+    return res.status(err.statusCode).render("error", {
+      title: "Something went wrong!",
+      msg: err.message,
+    });
+  }
+  // B) Programming or other unknown error: don't leak error details
+  // 1) Log error
+  console.error("ERROR 💥", err);
+  // 2) Send generic message
+  return res.status(err.statusCode).render("error", {
+    title: "Something went wrong!",
+    msg: "Please try again later.",
+  });
+};
 
 module.exports = (error, req, res, next) => {
   error.statusCode = error.statusCode || 500;
   error.status = error.status || "error";
+  console.log(process.env.NODE_ENV);
 
-  let err = { ...error };
-  err.message = error.message;
-  if (error.name === "CastError") err = handleCastErrorDB(err);
-  if (error.code === 11000) err = handleDuplicateFieldsDB(err);
-  if (error.name === "ValidationError") err = handleValidationErrDB(err);
-  if (err.name === "JsonWebTokenError") err = handleJWTError();
-  if (err.name === "TokenExpiredError") err = handleTokenExpError();
+  if (process.env.NODE_ENV === "development") {
+    sendErrorDev(error, req, res);
+  } else if (process.env.NODE_ENV === "production") {
+    let err = { ...error };
+    err.message = error.message;
+    if (error.name === "CastError") err = handleCastErrorDB(err);
+    if (error.code === 11000) err = handleDuplicateFieldsDB(err);
+    if (error.name === "ValidationError") err = handleValidationErrDB(err);
+    if (err.name === "JsonWebTokenError") err = handleJWTError();
+    if (err.name === "TokenExpiredError") err = handleTokenExpError();
 
-  sendError(err, req, res);
-  //   }
+    sendErrorPro(err, req, res);
+  }
 };

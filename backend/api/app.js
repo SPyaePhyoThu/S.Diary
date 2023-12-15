@@ -8,6 +8,10 @@ const globalErrorHandler = require("./controller/errorController");
 const rateLimit = require("express-rate-limit");
 const AppError = require("./util/appError");
 const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
+const mongoSanitize = require("express-mongo-sanitize");
+const compression = require("compression");
+const xss = require("xss-clean");
 
 //express app
 const app = express();
@@ -19,26 +23,14 @@ app.set("views", path.join(__dirname, "views"));
 app.use(cors());
 app.use(pcors());
 
-// Allow all origins
-app.use((req, res, next) => {
-  // Set the necessary CORS headers
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
-
-app.use(
-  cors({
-    origin: "https://s-diary-frontend.vercel.app",
-    methods: "GET,HEAD,PATCH,POST,DELETE",
-    credentials: true,
-  })
-);
-
 app.options("*", cors());
 
 //serving static files from the backend
 app.use("/static", express.static(path.join(__dirname, "public")));
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 //trust the first hop
 app.set("trust proxy", 1);
@@ -62,7 +54,13 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-0;
+app.use(compression());
+
+//data sanitization against noSQL query injection
+app.use(mongoSanitize());
+//Data sanitization against XSS
+app.use(xss());
+
 //routes
 app.use("/api/v1/diary", diaryRoutes);
 app.use("/api/v1/user", userRoutes);
@@ -89,13 +87,13 @@ app.use((req, res, next) => {
 
 //error for unknown routes
 app.all("*", (req, res, next) => {
-  res.status(404).json({
-    status: "fail",
-    message: `Cant find ${req.originalUrl} on this server!`,
-  });
-  const err = new Error(`Cant find ${req.originalUrl} on this server!`);
-  err.status = "fail";
-  err.statusCode = 404;
+  // res.status(404).json({
+  //   status: "fail",
+  //   message: `Cant find ${req.originalUrl} on this server!`,
+  // });
+  // const err = new Error(`Cant find ${req.originalUrl} on this server!`);
+  // err.status = "fail";
+  // err.statusCode = 404;
 
   next(new AppError(`Cant find ${req.originalUrl} on this server!`, 404));
 });
