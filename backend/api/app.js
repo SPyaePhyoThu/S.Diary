@@ -17,8 +17,8 @@ const xss = require("xss-clean");
 const app = express();
 
 // Set the view engine to EJS
-// app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "..", "views"));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "..", "views"));
 
 app.use(cors());
 app.use(pcors());
@@ -62,6 +62,12 @@ app.use(mongoSanitize());
 app.use(xss());
 
 //routes
+app.get("/", (req, res) => {
+  res.render("landingPage");
+});
+// app.use((req, res) => {
+//   res.status(404).render("404Page");
+// });
 app.use("/api/v1/diary", diaryRoutes);
 app.use("/api/v1/user", userRoutes);
 app.get("/api/v1/userphoto/:filename", (req, res) => {
