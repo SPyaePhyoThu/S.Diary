@@ -53,6 +53,6 @@
     "promisify": "^0.0.3"
   },
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   }
 }
