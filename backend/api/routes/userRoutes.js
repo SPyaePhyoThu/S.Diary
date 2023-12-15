@@ -3,8 +3,8 @@ const authController = require("../controller/authController");
 const userController = require("../controller/userController");
 
 const router = express.Router();
-const methodNotAllowed = (req, res, next) => res.status(405).send();
-router.route("/login").post(authController.login).all(methodNotAllowed);
+
+router.post("/login", authController.login);
 
 router.post("/signup", authController.signup);
 router.get("/logout", authController.logout);
