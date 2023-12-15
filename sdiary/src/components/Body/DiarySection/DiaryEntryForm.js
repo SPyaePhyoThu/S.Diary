@@ -136,6 +136,7 @@ const DiaryEntryForm = () => {
           body: JSON.stringify(diaries),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         }
       );
@@ -182,6 +183,7 @@ const DiaryEntryForm = () => {
           body: JSON.stringify(diary),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         }
       );

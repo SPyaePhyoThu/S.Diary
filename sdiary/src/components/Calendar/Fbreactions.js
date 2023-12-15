@@ -39,7 +39,13 @@ const FBReactions = (props) => {
     if (user.data.user.role === "not user") return;
     try {
       const response = await fetch(
-        "https://sdiary-backend.onrender.com/api/v1/user/me"
+        "https://sdiary-backend.onrender.com/api/v1/user/me",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
       );
       const json = await response.json();
       const updatedDateArray = json && json.data.doc.dates;
@@ -51,6 +57,7 @@ const FBReactions = (props) => {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
           body: JSON.stringify({ dates: updatedDateArray }),
         }

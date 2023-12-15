@@ -35,7 +35,13 @@ const DateList = () => {
     try {
       const fetchDiary = async () => {
         const res = await fetch(
-          "https://sdiary-backend.onrender.com/api/v1/diary"
+          "https://sdiary-backend.onrender.com/api/v1/diary",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
         );
         const json = await res.json();
 

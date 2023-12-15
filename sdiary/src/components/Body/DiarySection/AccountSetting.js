@@ -91,6 +91,10 @@ const AccountSetting = () => {
         "https://sdiary-backend.onrender.com/api/v1/user/updateMe",
         {
           method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
           body: form,
         }
       );

@@ -8,6 +8,7 @@ import Sad from "../../assets/sad.svg";
 import Soaked from "../../assets/soaked.svg";
 import Love from "../../assets/love.svg";
 import DiaryContext from "../context/DiaryContext";
+import { useAuthContext } from "../hooks/useAuthcontext";
 
 const Calendar = () => {
   const [dates, setDates] = useState([]);
@@ -17,8 +18,7 @@ const Calendar = () => {
   const [month, setMonth] = useState(date.getMonth()); // gets the current month (index based, 0-11)
   const [clickedDay, setClickedDay] = useState();
   const { reload } = useContext(DiaryContext);
-  // const [indexOfFirstDay, setIndexOfFirstDay] = useState();
-  // const [indexOfLastDay, setIndexOfLastDay] = useState();
+  const { user } = useAuthContext();
   const months = [
     "January",
     "February",
@@ -120,7 +120,13 @@ const Calendar = () => {
   useEffect(() => {
     const getUser = async () => {
       const response = await fetch(
-        "https://sdiary-backend.onrender.com/api/v1/user/me"
+        "https://sdiary-backend.onrender.com/api/v1/user/me",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
       );
       const json = await response.json();
       const rawDates = json.data.doc.dates;
@@ -150,6 +156,7 @@ const Calendar = () => {
               method: "PATCH",
               headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${user.token}`,
               },
               body: JSON.stringify({ dates: newDates }),
             }
