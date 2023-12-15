@@ -13,7 +13,6 @@ export const useSignup = () => {
       const response = await fetch("/api/v1/user/signup", {
         method: "POST",
         mode: "cors",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

@@ -16,7 +16,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Allow all origins
-app.use(cors());
+app.use((req, res, next) => {
+  // Set the necessary CORS headers
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use(
   cors({
