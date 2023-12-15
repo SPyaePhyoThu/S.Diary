@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "start:prod" : "set NODE_ENV=production&& nodemon --exec babel-node api/index.js",
-    "dev": "nodemon --exec babel-node api/index.js",
+    "start:prod": "set NODE_ENV=production&& nodemon --exec babel-node api/index.js",
+    "dev": "nodemon --exec babel-node --require @babel/preset-env api/index.js",
     "build": "babel src -d dist"
   },
   "author": "",
@@ -25,7 +25,7 @@
     "gm": "^1.25.0",
     "html-to-text": "^9.0.5",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.5.4",
+    "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.7",
@@ -43,11 +43,11 @@
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.6",
     "@babel/node": "^7.22.19",
-    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
+    "cross-env": "^7.0.0",
     "express-rate-limit": "^7.1.5",
     "nodemon": "^3.0.2",
-    "promisify": "^0.0.3",
-    "cross-env": "^7.0.0"
+    "promisify": "^0.0.3"
   }
 }
