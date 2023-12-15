@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const pcors = require("permissive-cors");
 const path = require("path");
 const diaryRoutes = require("./routes/diariesRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -16,6 +17,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(cors());
+app.use(pcors());
 
 // Allow all origins
 app.use((req, res, next) => {
@@ -60,9 +62,10 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+0;
 //routes
 app.use("/api/v1/diary", diaryRoutes);
-app.use("https://s-diary-frontend.vercel.app/api/v1/user", userRoutes);
+app.use("/api/v1/user", userRoutes);
 app.get("/api/v1/userphoto/:filename", (req, res) => {
   const filename = req.params.filename;
   res.sendFile(path.join(__dirname, "../public/img/users", filename));

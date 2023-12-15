@@ -14,7 +14,7 @@ export const useLogin = () => {
       const response = await fetch("/api/v1/user/login", {
         method: "POST",
         mode: "cors",
-        // headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       const json = await response.json();
@@ -39,17 +39,14 @@ export const useLogin = () => {
 
   const forgotPassword = async (email) => {
     try {
-      const response = await fetch(
-        "https://s-diary-backend.vercel.app/api/v1/user/forgotPassword",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: email }),
-        }
-      );
+      const response = await fetch("/api/v1/user/forgotPassword", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+      });
 
       if (!response.ok) {
         const json = await response.json();

@@ -47,6 +47,7 @@ const LogIn = () => {
             className={classes.input}
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            id="email"
           />
         </label>
         <label htmlFor="password" className={classes.label}>
@@ -56,6 +57,7 @@ const LogIn = () => {
             className={classes.input}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            id="password"
           />
         </label>
         <button
