@@ -16,7 +16,9 @@ const Moments = () => {
   const { user } = useAuthContext();
   useEffect(() => {
     const fetchDiary = async () => {
-      const res = await fetch("/api/v1/diary");
+      const res = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/diary"
+      );
       const json = await res.json();
       if (res.ok) {
         setDays(json.data.data.filter((j) => j.selected === true));
@@ -39,14 +41,17 @@ const Moments = () => {
     const id = e.target.id;
     const diary = { selected: false };
     try {
-      const response = await fetch(`/api/v1/diary/${id}`, {
-        method: "PATCH",
-        body: JSON.stringify(diary),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        `https://sdiary-backend.onrender.com/api/v1/diary/${id}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(diary),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       if (response.ok) {
         reloadHandler(true);
       }

@@ -87,10 +87,13 @@ const AccountSetting = () => {
       form.append("email", email);
       form.append("photo", photoFile);
 
-      const response = await fetch("/api/v1/user/updateMe", {
-        method: "PATCH",
-        body: form,
-      });
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/updateMe",
+        {
+          method: "PATCH",
+          body: form,
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {
@@ -110,18 +113,21 @@ const AccountSetting = () => {
   const passwordSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/v1/user/updateMyPassword", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-        body: JSON.stringify({
-          passwordCurrent: passwordCurrent,
-          password: password,
-          passwordConfirm: passwordConfirm,
-        }),
-      });
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/updateMyPassword",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify({
+            passwordCurrent: passwordCurrent,
+            password: password,
+            passwordConfirm: passwordConfirm,
+          }),
+        }
+      );
 
       if (response.ok) {
         logOutAfterUpdate("password");

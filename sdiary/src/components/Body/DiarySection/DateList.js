@@ -34,7 +34,9 @@ const DateList = () => {
   useEffect(() => {
     try {
       const fetchDiary = async () => {
-        const res = await fetch("/api/v1/diary");
+        const res = await fetch(
+          "https://sdiary-backend.onrender.com/api/v1/diary"
+        );
         const json = await res.json();
 
         if (res.ok) {

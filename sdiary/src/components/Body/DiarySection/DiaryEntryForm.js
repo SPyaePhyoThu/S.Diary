@@ -129,13 +129,16 @@ const DiaryEntryForm = () => {
       details,
     };
     try {
-      const response = await fetch("/api/v1/diary", {
-        method: "POST",
-        body: JSON.stringify(diaries),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/diary",
+        {
+          method: "POST",
+          body: JSON.stringify(diaries),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const json = await response.json();
 
       if (!response.ok) {
@@ -172,13 +175,16 @@ const DiaryEntryForm = () => {
     };
 
     try {
-      const response = await fetch(`/api/v1/diary/${selectedDiary._id}`, {
-        method: "PATCH",
-        body: JSON.stringify(diary),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://sdiary-backend.onrender.com/api/v1/diary/${selectedDiary._id}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(diary),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const json = await response.json();
       if (!response.ok) {
         setError(json.message);

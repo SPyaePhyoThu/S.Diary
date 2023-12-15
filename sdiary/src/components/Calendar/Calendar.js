@@ -119,7 +119,9 @@ const Calendar = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await fetch("/api/v1/user/me");
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/me"
+      );
       const json = await response.json();
       const rawDates = json.data.doc.dates;
       transformArray(rawDates);
@@ -142,13 +144,16 @@ const Calendar = () => {
       //Update dates array at start of every Month
       const updateNewDateArray = async () => {
         try {
-          const response = await fetch("api/v1/user/updateDatesArray", {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ dates: newDates }),
-          });
+          const response = await fetch(
+            "https://sdiary-backend.onrender.com/api/v1/user/updateDatesArray",
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ dates: newDates }),
+            }
+          );
           const json = await response.json();
         } catch (error) {
           console.error("Error updating dates Array", error);

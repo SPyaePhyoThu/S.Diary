@@ -38,18 +38,23 @@ const FBReactions = (props) => {
   const exportReactions = async (reaction) => {
     if (user.data.user.role === "not user") return;
     try {
-      const response = await fetch("/api/v1/user/me");
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/me"
+      );
       const json = await response.json();
       const updatedDateArray = json && json.data.doc.dates;
 
       updatedDateArray[id] = reaction;
-      const res = await fetch("/api/v1/user/updateDatesArray", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ dates: updatedDateArray }),
-      });
+      const res = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/updateDatesArray",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ dates: updatedDateArray }),
+        }
+      );
 
       if (res.ok) {
         reloadHandler();

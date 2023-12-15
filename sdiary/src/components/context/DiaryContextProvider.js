@@ -28,7 +28,7 @@ const DiaryProvider = (props) => {
     const fetchPhoto = async () => {
       try {
         const response = await fetch(
-          `/api/v1/userphoto/${user.data.user.photo}`
+          `https://sdiary-backend.onrender.com/api/v1/userphoto/${user.data.user.photo}`
         );
         if (!response.ok) {
           throw new Error("Failer to fetch user");

@@ -88,7 +88,9 @@ const Diary = () => {
   useEffect(() => {
     try {
       const fetchDiary = async () => {
-        const response = await fetch(`api/v1/diary/${id}`);
+        const response = await fetch(
+          `https://sdiary-backend.onrender.com/api/v1/diary/${id}`
+        );
         const json = await response.json();
         if (!response.ok) {
           setError(json);
@@ -120,13 +122,16 @@ const Diary = () => {
     const diary = { selected: true };
 
     try {
-      const response = await fetch(`/api/v1/diary/${id}`, {
-        method: "PATCH",
-        body: JSON.stringify(diary),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://sdiary-backend.onrender.com/api/v1/diary/${id}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(diary),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         dispatch({ type: "SELECT_DIARY" });
