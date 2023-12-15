@@ -17,8 +17,8 @@ const xss = require("xss-clean");
 const app = express();
 
 // Set the view engine to EJS
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, ".", "views"));
+// app.set("view engine", "ejs");
+// app.set("views", path.join(__dirname, ".", "views"));
 
 app.use(cors());
 app.use(pcors());
