@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/register": "^7.22.15",
     "bcryptjs": "^2.4.3",
+    "common": "^0.2.5",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
