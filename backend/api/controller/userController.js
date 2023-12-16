@@ -1,6 +1,7 @@
 const multer = require("multer");
+const fs = require("fs");
 const sharp = require("sharp");
-const gm = require("gm");
+const gm = require("gm").subClass({ imageMagick: true });
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
 const AppError = require("../util/appError");
@@ -108,13 +109,24 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-  await sharp(req.file.buffer)
+  gm(req.file.buffer)
     .resize(500, 500)
-    .toFormat("jpeg")
-    .jpeg({ quality: 90 })
-    .toFile(`public/img/users/${req.file.filename}`);
+    .toBuffer("JPEG", (err, buffer) => {
+      if (err) {
+        return next(err);
+      }
+      fs.writeFile(
+        `public/img/users/${req.file.filename}`,
+        buffer,
+        (writeErr) => {
+          if (writeErr) {
+            return next(writeErr);
+          }
 
-  next();
+          next();
+        }
+      );
+    });
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
