@@ -86,16 +86,18 @@ const AccountSetting = () => {
     form.append("name", name);
     form.append("email", email);
     form.append("photo", photoFile);
-    console.log(form);
 
     try {
-      const response = await fetch("/api/v1/user/updateMe", {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-        body: form,
-      });
+      const response = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/user/updateMe",
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: form,
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {
@@ -161,7 +163,9 @@ const AccountSetting = () => {
             onChange={photoChangeHandler}
           />
           <label htmlFor="photo" className={classes.labelPhoto}>
-            Choose New Photo
+            Choose New Photo <br />
+            (You won't be able to upload your photo since I can't afford to use
+            paid platform to live my website.Sorry about that)
           </label>
         </div>
         <div className={classes.nameInput}>
@@ -250,7 +254,8 @@ const AccountSetting = () => {
         )}
         {!error2 && warning1.length > 0 && (
           <p className={classes.warning}>
-            {warning1[0]} <span className={classes.warning2}>{warning[1]}</span>
+            {warning1[0]}{" "}
+            <span className={classes.warning2}>{warning1[1]}</span>
           </p>
         )}
         {error2 && <p className={classes.warning}>{error2}</p>}

@@ -1,7 +1,5 @@
 const multer = require("multer");
-const fs = require("fs");
-const sharp = require("sharp");
-const gm = require("gm").subClass({ imageMagick: true });
+const gm = require("gm");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
 const AppError = require("../util/appError");
@@ -105,28 +103,19 @@ const filterObj = (obj, ...allowedFileds) => {
   return newObj;
 };
 
+//this doesn't work on live website yet
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
-  if (!req.file) return next();
+  console.log(req.file);
+  // if (!req.file) return next();
 
-  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-  gm(req.file.buffer)
-    .resize(500, 500)
-    .toBuffer("JPEG", (err, buffer) => {
-      if (err) {
-        return next(err);
-      }
-      fs.writeFile(
-        `public/img/users/${req.file.filename}`,
-        buffer,
-        (writeErr) => {
-          if (writeErr) {
-            return next(writeErr);
-          }
+  // req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+  // await gm(req.file.buffer)
+  //   .resize(500, 500)
+  //   .toFormat("jpeg")
+  //   .jpeg({ quality: 90 })
+  //   .toFile(`public/img/users/${req.file.filename}`);
 
-          next();
-        }
-      );
-    });
+  next();
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
