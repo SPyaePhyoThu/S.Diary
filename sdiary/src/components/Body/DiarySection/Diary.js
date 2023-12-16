@@ -157,13 +157,16 @@ const Diary = () => {
     const id = e.target.id;
 
     try {
-      const response = await fetch(`/api/v1/diary/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        `https://sdiary-backend.onrender.com/api/v1/diary/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       reloadHandler();
       handleClick(true);
     } catch (error) {
