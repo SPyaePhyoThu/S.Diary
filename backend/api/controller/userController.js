@@ -1,4 +1,5 @@
 const multer = require("multer");
+const sharp = require("sharp");
 const gm = require("gm");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
@@ -95,19 +96,6 @@ const upload = multer({
 
 exports.uploadPhoto = upload.single("photo");
 
-exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
-  if (!req.file) return next();
-
-  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-  await gm(req.file.buffer)
-    .resize(500, 500)
-    .toFormat("jpeg")
-    .jpeg({ quality: 90 })
-    .toFile(`public/img/users/${req.file.filename}`);
-
-  next();
-});
-
 const filterObj = (obj, ...allowedFileds) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
@@ -116,12 +104,28 @@ const filterObj = (obj, ...allowedFileds) => {
   return newObj;
 };
 
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
+  if (!req.file) return next();
+
+  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+  await sharp(req.file.buffer)
+    .resize(500, 500)
+    .toFormat("jpeg")
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/users/${req.file.filename}`);
+
+  next();
+});
+
 exports.updateMe = catchAsync(async (req, res, next) => {
+  console.log(req.file);
+  console.log(req.body);
   //1 .create Error if user post password
   if (req.body.password || req.body.passwordConfirm) {
     return next(new AppError("This is not for password update", 401));
   }
   //2) filter out the data which dont wanted to be updated.
+  console.log(req.body);
   const filterBody = filterObj(req.body, "name", "email");
   if (req.file) filterBody.photo = req.file.filename;
   //3) update user doc

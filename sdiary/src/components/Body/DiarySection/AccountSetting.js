@@ -81,23 +81,21 @@ const AccountSetting = () => {
   //Handler functions
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const form = new FormData();
-      form.append("name", name);
-      form.append("email", email);
-      form.append("photo", photoFile);
 
-      const response = await fetch(
-        "https://sdiary-backend.onrender.com/api/v1/user/updateMe",
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-          },
-          body: form,
-        }
-      );
+    const form = new FormData();
+    form.append("name", name);
+    form.append("email", email);
+    form.append("photo", photoFile);
+    console.log(form);
+
+    try {
+      const response = await fetch("/api/v1/user/updateMe", {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: form,
+      });
       const json = await response.json();
 
       if (response.ok) {

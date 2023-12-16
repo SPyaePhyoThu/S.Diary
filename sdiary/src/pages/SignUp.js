@@ -108,12 +108,8 @@ const SignUp = () => {
             value={passwordConfirm}
           />
         </label>
-        <button
-          onSubmit={submitHandler}
-          disabled={isLoading}
-          className={classes.btnWideSignup}
-        >
-          Sign Up
+        <button onSubmit={submitHandler} className={classes.btnWideSignup}>
+          {isLoading ? "Loading..." : "Sign Up"}
         </button>
         {error && <div className={classes.error}>{error}</div>}
       </form>

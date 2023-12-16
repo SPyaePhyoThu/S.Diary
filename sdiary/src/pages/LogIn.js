@@ -35,7 +35,7 @@ const LogIn = () => {
           <button className={classes.btn}>Sing Up</button>
         </Link>
         <button className={classes.btn} onClick={clickHandler}>
-          Demo
+          {isLoading ? "Loading..." : "Demo"}
         </button>
       </div>
       <h1 className={classes.heading}>S.Diary</h1>
@@ -60,12 +60,8 @@ const LogIn = () => {
             id="password"
           />
         </label>
-        <button
-          onSubmit={submitHandler}
-          className={classes.btnWide}
-          disabled={isLoading}
-        >
-          Log In
+        <button onSubmit={submitHandler} className={classes.btnWide}>
+          {isLoading ? "Loading..." : "log In"}
         </button>
         {error && <div className={classes.error}>{error}</div>}
       </form>
