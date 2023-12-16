@@ -127,7 +127,10 @@
     display: block;
   }
 
-  @media (max-width : 450px){
+  @media (max-width : 470px){
+    .section{
+      width: 100%;
+    }
     .label{
      padding-left: 7rem;
     }

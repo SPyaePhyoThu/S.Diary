@@ -128,7 +128,7 @@ overflow-x: hidden;
     height: 10.5rem;
    }
 }
-@media (max-width : 450px){
+@media (max-width : 470px){
     .momentSection{
          height: 31rem;
     }

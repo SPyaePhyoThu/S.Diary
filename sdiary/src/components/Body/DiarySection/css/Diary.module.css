@@ -179,7 +179,7 @@
 
 }
 
-@media (max-width : 450px){
+@media (max-width : 470px){
     .diary{
         grid-row-gap: 1rem;
     }

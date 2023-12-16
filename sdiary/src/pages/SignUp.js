@@ -1,7 +1,7 @@
 import DiaryIcon from "../components/UI/DiaryIcon";
 import classes from "./SignUpAndLogIn.module.css";
 import Foot from "../components/Foot/Foot";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSignup } from "../components/hooks/useSignup";
 import { Link } from "react-router-dom";
 import { useLogin } from "../components/hooks/useLogin";
@@ -55,10 +55,10 @@ const SignUp = () => {
   const clickHandler = async () => {
     await login(
       process.env.REACT_APP_API_EMAIL,
-      process.env.REACT_APP_API_PASSWORD
+      process.env.REACT_APP_API_PASSWORD,
+      "not user"
     );
   };
-
   return (
     <div className={classes.page}>
       <div className={classes.topSection}>

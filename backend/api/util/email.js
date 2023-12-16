@@ -36,12 +36,12 @@ module.exports = class Email {
     // Render the EJS template to HTML
     let htmlTemplate;
     if (type === "welcome") {
-      htmlTemplate = await ejs.renderFile(resetPasswordTemplatePath, {
+      htmlTemplate = await ejs.renderFile(welcomeTemplatePath, {
         firstName: this.firstName,
       });
     }
     if (type === "resetPassword") {
-      htmlTemplate = await ejs.renderFile(welcomeTemplatePath, {
+      htmlTemplate = await ejs.renderFile(resetPasswordTemplatePath, {
         firstName: this.firstName,
         url: this.url,
       });

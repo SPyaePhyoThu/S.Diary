@@ -17,7 +17,15 @@ const DiaryProvider = (props) => {
   // fetch for Default diary
   useEffect(() => {
     const fetchDiary = async () => {
-      const res = await fetch("/api/v1/diary");
+      const res = await fetch(
+        "https://sdiary-backend.onrender.com/api/v1/diary",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
 
       const json = await res.json();
 

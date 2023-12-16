@@ -9,6 +9,10 @@ export const useLogin = () => {
   const login = async (email, password, role) => {
     setIsLoading(true);
     setError(null);
+    if (!email || !password) {
+      setError("Please enter your email and password");
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -41,6 +45,10 @@ export const useLogin = () => {
   };
 
   const forgotPassword = async (email) => {
+    if (!email) {
+      setError("Please enter your account email");
+      return;
+    }
     try {
       const response = await fetch(
         "https://sdiary-backend.onrender.com/api/v1/user/forgotPassword",

@@ -9,6 +9,11 @@ export const useSignup = () => {
   const signUp = async (name, email, password, passwordConfirm, dates) => {
     setIsLoading(true);
     setError(null);
+
+    if (!email || !name || !password || !passwordConfirm || !dates) {
+      setError("Please enter all field");
+      return;
+    }
     try {
       const response = await fetch(
         "https://sdiary-backend.onrender.com/api/v1/user/signup",
