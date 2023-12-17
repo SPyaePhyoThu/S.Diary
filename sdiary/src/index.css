@@ -34,3 +34,8 @@ html{
   font-size: 50%;
 }
 }
+@media (max-width : 470px) {
+  html{
+  font-size: 8px;
+}
+}
