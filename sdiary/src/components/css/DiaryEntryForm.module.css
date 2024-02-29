@@ -1,0 +1,224 @@
+.form {
+  padding: 0.5rem 2rem;
+  display: grid;
+  grid-template-rows: repeat(6, max-content) 1fr max-content;
+  height: 70rem;
+}
+.headerSection {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+}
+.heading {
+  font-size: 4rem;
+  margin: 1rem 0;
+}
+
+.currentDay {
+  background-color: var(--third--color);
+  justify-self: center;
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 1.3rem;
+  border: 1px solid black;
+}
+
+.label {
+  border: 1px solid var(--fifth--color);
+  padding: 0.5rem 0.7rem;
+  padding-left: 0;
+
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+.labelSelected {
+  padding: 0.5rem 0.7rem;
+  padding-left: 0;
+  background-color: var(--fourth--color);
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+}
+
+.input {
+  opacity: 0;
+  width: 0;
+  cursor: pointer;
+}
+.clicked {
+  border: 1px solid var(--fifth--color);
+}
+.feelingInput {
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  border-radius: 1.5rem;
+  background-color: var(--third--color);
+  outline: none;
+  border: 1px solid var(--fifth--color);
+  font-family: inherit;
+  font-size: 1.1rem;
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 2rem;
+  background-color: var(--third--color);
+  resize: none;
+  border: 1px solid var(--fifth--color);
+  outline-color: var(--fifth--color);
+  color: var(--fifth--color);
+  font-family: inherit;
+}
+.btnBox {
+  display: grid;
+  justify-content: end;
+  grid-template-columns: 1fr min-content min-content;
+}
+.btnBoxWOError {
+  display: grid;
+  justify-content: end;
+  grid-template-columns: 1fr min-content;
+}
+.error {
+  font-size: 1.3rem;
+  justify-self: center;
+  align-self: center;
+  color: red;
+  font-weight: 600;
+  margin: 0;
+}
+.btn {
+  justify-self: end;
+  align-self: flex-end;
+  margin: 1rem 0;
+  margin-left: 1.5rem;
+  border: none;
+  background-color: var(--fifth--color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 1.2rem;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.questions {
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 1.5rem 0;
+  padding-bottom: 0.5rem;
+}
+
+.secondColor,
+.fifthColor,
+.fourthColor {
+  border: 1px solid var(--fifth--color);
+  padding: 0.5rem 0.7rem;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding-left: 0;
+}
+.secondColorSelected,
+.fifthColorSelected,
+.fourthColorSelected {
+  background-color: var(--fourth--color);
+  color: white;
+  outline: none;
+  padding: 0.5rem 0.7rem;
+  padding-left: 0;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+/* .fifthColor {
+  background-color: var(--fifth--color);
+  color: var(--second--color);
+  padding-left: 0;
+  padding: 0.3rem 0.6rem;
+  padding-left: 0;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+} */
+/* .fifthColorSelected {
+  background-color: var(--fifth--color);
+  border: 2px solid var(--second--color);
+  color: var(--second--color);
+  padding-left: 0;
+  padding: 0.3rem 0.6rem;
+  padding-left: 0;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+} */
+/* .fourthColor {
+  background-color: var(--fourth--color);
+  padding: 0.3rem 0.6rem;
+  padding-left: 0;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+.fourthColorSelected {
+  background-color: var(--fourth--color);
+  border: 2px solid var(--fifth--color);
+  padding: 0.3rem 0.6rem;
+  padding-left: 0;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+} */
+@media (max-width: 1025px) {
+  .btn {
+    align-self: center;
+    margin: 1rem 0.5rem;
+  }
+}
+@media (max-width: 770px) {
+  .feelingInput {
+    padding: 1rem 0.5rem;
+    padding-top: 0.5rem;
+  }
+}
+@media (max-width: 470px) {
+  .heading {
+    font-size: 4rem;
+    margin: 0;
+  }
+  .form {
+    width: 96%;
+    padding: 0 1rem;
+  }
+  .feelingInput {
+    padding: 0;
+  }
+  .questions {
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: 1rem 0.5rem;
+    padding-bottom: 0.2rem;
+  }
+  .textarea {
+    font-size: 1.3rem;
+    height: 36rem;
+  }
+  .btn {
+    align-self: center;
+    margin: 0 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}

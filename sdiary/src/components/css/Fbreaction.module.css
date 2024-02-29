@@ -1,0 +1,71 @@
+.btn {
+  border: none;
+  background-color: transparent;
+  height: 90%;
+  width: 95%;
+  font-family: inherit;
+  position: absolute;
+}
+.container {
+  position: absolute;
+  background-color: white;
+  right: -10%;
+  top: -10%;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  border: 1px solid var(--fifth--color);
+  display: grid;
+  justify-self: center;
+  align-self: center;
+}
+
+.reactionBox {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(6, max-content);
+  grid-column-gap: 0.1rem;
+  left: -565%;
+  top: -120%;
+  border: 1px solid var(--fifth--color);
+  background-color: white;
+  border-radius: 1rem;
+}
+.reactions {
+  width: 2rem;
+  z-index: 1;
+}
+.reactionsSelected {
+  position: absolute;
+  right: -10%;
+  top: -5%;
+  width: 2rem;
+  height: 2rem;
+  z-index: 1;
+}
+.reaction {
+  width: 3.5rem;
+  z-index: 1;
+}
+.datesBtn {
+  align-self: center;
+  background-color: var(--third--color);
+  border-radius: 50%;
+  text-align: center;
+  padding: 0.7rem;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  font-family: inherit;
+}
+.error {
+  background-color: red;
+  color: white;
+  position: absolute;
+  right: -10%;
+  top: -5%;
+  width: 2rem;
+  height: 2rem;
+  z-index: 1;
+  border-radius: 100%;
+}

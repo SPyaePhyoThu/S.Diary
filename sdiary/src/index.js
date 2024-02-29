@@ -2,20 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { DiariesContextProvider } from "../src/components/context/DiariesContext";
-import DiaryProvider from "./components/context/DiaryContextProvider";
-import { AuthContextProvider } from "./components/context/AuthContext";
+import { DiariesContextProvider } from "../src/context/DiariesContext";
+import DiaryProvider from "./context/DiaryContextProvider";
+import { AuthContextProvider } from "./context/AuthContext";
+import { DatesContextProvider } from "./context/DatesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <DiariesContextProvider>
-      <AuthContextProvider>
-        <DiaryProvider>
-          <App />
-        </DiaryProvider>
-      </AuthContextProvider>
-    </DiariesContextProvider>
+    <AuthContextProvider>
+      <DiaryProvider>
+        <DiariesContextProvider>
+          <DatesContextProvider>
+            <App />
+          </DatesContextProvider>
+        </DiariesContextProvider>
+      </DiaryProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

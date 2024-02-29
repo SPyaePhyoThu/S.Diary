@@ -1,0 +1,131 @@
+.momentSection {
+  width: 100%;
+  height: 31.25rem;
+  background-color: var(--second--color);
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+.heading {
+  font-size: 2.2rem;
+  margin: 1rem;
+
+  background-color: transparent;
+}
+.moments {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  justify-items: center;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.emptyBox {
+  width: 95%;
+  padding: 0.5rem 0;
+}
+.item {
+  width: 100%;
+  height: 100%;
+  background-color: var(--third--color);
+  border-radius: 2rem;
+  list-style: none;
+  border: 1px solid var(--fifth--color);
+}
+
+.box1 {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  border-bottom: 2px solid var(--fifth--color);
+  align-items: center;
+  margin: 0 1rem;
+  padding: 0.5rem 0;
+}
+
+.time {
+  padding: 0.3rem;
+  padding-left: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  justify-self: center;
+}
+
+.icon {
+  display: grid;
+  justify-self: end;
+}
+.details {
+  overflow: hidden;
+  margin: 0;
+  font-size: 1.3rem;
+  text-align: justify;
+  padding: 0.5rem 1rem;
+  height: 5.7rem;
+  cursor: pointer;
+}
+
+.box3 {
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+}
+
+.fourthColor {
+  padding: 0.2rem 1rem;
+  border: 1px solid var(--fifth--color);
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.secondColor {
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.fifthColor {
+  color: var(--second--color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.feel {
+  padding: 0.3rem 0.6rem;
+  margin-right: 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 1.3rem;
+}
+.star {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: var(--second--color);
+  fill: var(--fourth--color);
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+@media (max-width: 769px) {
+  .momentSection {
+    height: 28rem;
+  }
+  .box2 {
+    height: 5.5rem;
+  }
+  .emptyBox,
+  .item {
+    height: 10.5rem;
+  }
+}
+@media (max-width: 470px) {
+  .momentSection {
+    height: 31rem;
+  }
+  .box2 {
+    height: 6.5rem;
+  }
+  .emptyBox,
+  .item {
+    height: 11.5rem;
+  }
+}

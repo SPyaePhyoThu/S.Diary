@@ -1,0 +1,22 @@
+.singleCalendar {
+  position: relative;
+}
+
+.date {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  font-size: 4rem;
+  margin: 0;
+}
+@media (max-width: 1025px) {
+  .emptyCalendar {
+    transform: scale(0.8);
+    left: 1rem;
+  }
+}
+@media (max-width: 470px) {
+  .date {
+    top: 3rem;
+  }
+}

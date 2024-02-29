@@ -1,0 +1,100 @@
+.container {
+  height: 100%;
+  width: 100%;
+  font-family: "Inria Sans", sans-serif;
+}
+
+.loader {
+  height: 20px;
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loaderDot {
+  animation: loader ease-in-out 3s infinite;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: black;
+  position: absolute;
+  border: 2px solid white;
+}
+
+.loaderDot:first-child {
+  background-color: var(--fourth--color);
+  animation-delay: 0.5s;
+}
+
+.loaderDot:nth-child(2) {
+  background-color: var(--fifth--color);
+  animation-delay: 0.4s;
+}
+
+.loaderDot:nth-child(3) {
+  background-color: var(--third--color);
+  animation-delay: 0.3s;
+}
+
+.loaderDot:nth-child(4) {
+  background-color: var(--second--color);
+  animation-delay: 0.2s;
+}
+
+.loaderDot:nth-child(5) {
+  background-color: var(--first--color);
+  animation-delay: 0.1s;
+}
+
+.loaderDot:nth-child(6) {
+  background-color: #fbef5a;
+  animation-delay: 0s;
+}
+
+.loaderText {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  right: 0;
+  width: 4rem;
+  font-size: 5rem;
+}
+
+.loaderText:after {
+  content: "Loading";
+  font-weight: bold;
+  font-size: 5rem;
+  animation: loading-text 3s infinite;
+}
+
+@keyframes loader {
+  15% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(230px); /* $loader--width - $loader-dot--size */
+  }
+  65% {
+    transform: translateX(230px);
+  }
+  95% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes loading-text {
+  0% {
+    content: "Loading";
+  }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+}

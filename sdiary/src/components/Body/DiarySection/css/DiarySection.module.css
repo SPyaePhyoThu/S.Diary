@@ -1,9 +1,0 @@
-.diarySection{
-    background-color: var(--second--color);
-    border-radius: 0.5rem;
-}
-@media (max-width : 470px){
-    .diarySection{
-       width: 50rem;
-    }
-}

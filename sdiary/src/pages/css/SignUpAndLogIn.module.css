@@ -1,0 +1,150 @@
+.page {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(218, 222, 212, 0.6),
+      rgba(218, 222, 212, 0.6)
+    ),
+    url("https://images.unsplash.com/photo-1519327232521-1ea2c736d34d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGRpYXJ5fGVufDB8fDB8fHww");
+
+  background-size: cover;
+  background-position: center;
+  height: 100dvh;
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-rows: min-content 0.4fr 1fr min-content;
+  box-sizing: border-box;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, max-content);
+}
+.img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.btn {
+  background-color: var(--fifth--color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  font: inherit;
+  font-size: 1.4rem;
+  margin-left: 2rem;
+}
+
+.heading {
+  font-family: "Paytone One", sans-serif;
+  color: var(--fourth--color);
+  font-size: 5rem;
+  justify-self: center;
+  align-self: center;
+  margin: 4rem 0;
+}
+.headingSignup {
+  font-family: "Paytone One", sans-serif;
+  color: var(--fourth--color);
+  font-size: 5rem;
+  justify-self: center;
+  align-self: flex-start;
+  margin: 0;
+}
+.form {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+}
+.label {
+  display: block;
+  justify-self: center;
+  font-size: 1.5rem;
+}
+.input {
+  font-size: 1.5rem;
+  display: block;
+  width: 35rem;
+  height: 3rem;
+  outline: none;
+  border: 1.7px solid var(--fifth--color);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+.inputSignup {
+  font-size: 1.3rem;
+  display: block;
+  width: 35rem;
+  height: 2.5rem;
+  outline: none;
+  border: 1.7px solid var(--fifth--color);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.btnWide {
+  background-color: var(--fifth--color);
+  color: white;
+  width: 35rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+}
+.btnWideSignup {
+  background-color: var(--fifth--color);
+  color: white;
+  width: 35rem;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+}
+
+.btnDemo {
+  background-color: var(--fifth--color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  font: inherit;
+  font-size: 1.4rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.error {
+  text-align: center;
+  background-color: var(--fourth--color);
+  color: var(--second--color);
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.forgotPassword {
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: none;
+  color: var(--fifth--color);
+  font-family: inherit;
+  align-self: flex-start;
+  padding-bottom: 3rem;
+}
+
+@media (max-width: 1025px) {
+  .page {
+    grid-template-rows: min-content 0.5fr 1fr min-content;
+  }
+}
