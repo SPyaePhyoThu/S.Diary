@@ -39,11 +39,11 @@ const FBReactions = (props) => {
   };
 
   const exportReactions = async (reactionString) => {
+    setReaction(reactionString);
     if (user.data.user.role === "not user") {
-      setError("E");
       return;
     }
-    setReaction(reactionString);
+
     try {
       datesArray[id].reaction = reactionString;
       const res = await fetch(
