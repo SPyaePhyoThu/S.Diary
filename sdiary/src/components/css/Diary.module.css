@@ -150,6 +150,10 @@
   .diary {
     min-height: 70dvh;
   }
+  .secondSection {
+    width: 100%;
+    margin-left: 0%;
+  }
 }
 @media (max-width: 1025px) {
   .secondSection {
