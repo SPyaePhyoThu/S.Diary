@@ -66,6 +66,7 @@
     grid-column-gap: 0rem;
     padding: 0 1rem;
     padding-top: 1rem;
+    grid-row-gap: 1rem;
   }
   .mainSection {
     grid-column: 1/3;
