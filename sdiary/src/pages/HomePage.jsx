@@ -67,12 +67,13 @@ const HomePage = () => {
               </div>
               <div className={classes.leftSection}>
                 <NewCalendar />
-                <div className={classes.quote}>
-                  <Quote />
-                </div>
+
+                <Quote />
+
                 <Moments />
               </div>
             </div>
+
             <Foot />
           </div>
         </div>

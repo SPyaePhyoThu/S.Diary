@@ -55,7 +55,7 @@ const SignUp = () => {
     );
   };
   return (
-    <div className={classes.page}>
+    <div className={`${classes.page} ${classes.pageSignup}`}>
       {isLoading ? (
         <Loading />
       ) : (

@@ -2,8 +2,8 @@
   background-color: var(--second--color);
   border-radius: 3rem;
 }
-@media (max-width: 470px) {
+@media (max-width: 540px) {
   .diarySection {
-    width: 50rem;
+    width: 100%;
   }
 }

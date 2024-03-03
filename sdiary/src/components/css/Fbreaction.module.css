@@ -58,14 +58,11 @@
   border: none;
   font-family: inherit;
 }
-.error {
-  background-color: red;
-  color: white;
-  position: absolute;
-  right: -10%;
-  top: -5%;
-  width: 2rem;
-  height: 2rem;
-  z-index: 1;
-  border-radius: 100%;
+
+@media (max-width: 1025px) {
+  .plusSign {
+    position: absolute;
+    top: -11%;
+    right: 15%;
+  }
 }

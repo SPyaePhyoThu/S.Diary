@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./Setting.module.css";
 
 const Setting = (props) => {
   return (
@@ -8,7 +9,7 @@ const Setting = (props) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ margin: "0 1rem" }}
+      className={classes.icon}
       onClick={props.click}
     >
       <path

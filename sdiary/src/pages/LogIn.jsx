@@ -28,7 +28,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className={classes.page}>
+    <div className={`${classes.page} ${classes.pageLogin}`}>
       {isLoading ? (
         <Loading />
       ) : (

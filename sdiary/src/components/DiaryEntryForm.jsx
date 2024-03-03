@@ -215,81 +215,26 @@ const DiaryEntryForm = () => {
   };
 
   //feelings
-  const feeling = feelings.map((feel) => {
-    if (
-      feel.toLowerCase().trim() === "sad" ||
-      feel.toLowerCase().trim() === "tired" ||
-      feel.toLowerCase().trim() === "angry"
-    ) {
-      return (
-        <label
-          id={feel}
-          className={
-            selectedFeelings && selectedFeelings.includes(feel)
-              ? classes.fourthColorSelected
-              : classes.fourthColor
-          }
-          key={feel}
-        >
-          <input
-            value={feel}
-            type="checkbox"
-            className={classes.input}
-            htmlFor={feel}
-            onChange={handleChange}
-          />
-          {feel}
-        </label>
-      );
-    } else if (
-      feel.toLowerCase().trim() === "happy" ||
-      feel.toLowerCase().trim() === "satisfied" ||
-      feel.toLowerCase().trim() === "ok" ||
-      feel.toLowerCase().trim() === "confident"
-    ) {
-      return (
-        <label
-          id={feel}
-          className={
-            selectedFeelings && selectedFeelings.includes(feel)
-              ? classes.secondColorSelected
-              : classes.secondColor
-          }
-          key={feel}
-        >
-          <input
-            value={feel}
-            type="checkbox"
-            className={classes.input}
-            htmlFor={feel}
-            onChange={handleChange}
-          />
-          {feel}
-        </label>
-      );
-    } else {
-      return (
-        <label
-          id={feel}
-          className={
-            selectedFeelings && selectedFeelings.includes(feel)
-              ? classes.fifthColorSelected
-              : classes.fifthColor
-          }
-          key={feel}
-        >
-          <input
-            value={feel}
-            type="checkbox"
-            className={classes.input}
-            htmlFor={feel}
-            onChange={handleChange}
-          />
-          {feel}
-        </label>
-      );
-    }
-  });
+  const feeling = feelings.map((feel) => (
+    <label
+      id={feel}
+      className={
+        selectedFeelings && selectedFeelings.includes(feel)
+          ? classes.feelingSelected
+          : classes.feeling
+      }
+      key={feel}
+    >
+      <input
+        value={feel}
+        type="checkbox"
+        className={classes.input}
+        htmlFor={feel}
+        onChange={handleChange}
+      />
+      {feel}
+    </label>
+  ));
 
   return (
     <form

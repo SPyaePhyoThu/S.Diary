@@ -1,5 +1,12 @@
-.foot{
-    display: grid;
-    font-size: 1.2rem;
-    justify-items: center;
+.foot {
+  display: grid;
+  font-size: 1.2rem;
+  justify-items: center;
+  margin: 1rem 0;
+  align-self: flex-end;
+}
+@media (max-width: 540px) {
+  .foot {
+    margin: 0rem;
+  }
 }

@@ -56,9 +56,9 @@
 .loaderText {
   position: absolute;
   top: 200%;
-  left: 0;
+  left: 15%;
   right: 0;
-  width: 4rem;
+  width: 100%;
   font-size: 5rem;
 }
 

@@ -3,6 +3,7 @@
   display: grid;
   grid-template-rows: repeat(6, max-content) 1fr max-content;
   height: 70rem;
+  min-height: 80dvh;
 }
 .headerSection {
   display: grid;
@@ -26,21 +27,21 @@
 
 .label {
   border: 1px solid var(--fifth--color);
-  padding: 0.5rem 0.7rem;
-  padding-left: 0;
-
+  padding: 0.5rem 0;
+  padding-right: 0.6rem;
+  margin-right: 0.5rem;
   border-radius: 1rem;
   cursor: pointer;
-  margin-right: 0.5rem;
 }
 .labelSelected {
-  padding: 0.5rem 0.7rem;
-  padding-left: 0;
+  border: 1px solid var(--fifth--color);
+  color: white;
+  padding: 0.5rem 0;
+  padding-right: 0.6rem;
+  margin-right: 0.5rem;
   background-color: var(--fourth--color);
   border-radius: 1rem;
   cursor: pointer;
-  margin-right: 0.5rem;
-  outline: none;
 }
 
 .input {
@@ -122,66 +123,30 @@
   padding-bottom: 0.5rem;
 }
 
-.secondColor,
-.fifthColor,
-.fourthColor {
+.feeling {
   border: 1px solid var(--fifth--color);
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 0;
+  padding-right: 0.6rem;
   margin-right: 0.5rem;
   border-radius: 1rem;
   cursor: pointer;
-  padding-left: 0;
 }
-.secondColorSelected,
-.fifthColorSelected,
-.fourthColorSelected {
+.feelingSelected {
+  border: 1px solid var(--fifth--color);
   background-color: var(--fourth--color);
   color: white;
-  outline: none;
-  padding: 0.5rem 0.7rem;
-  padding-left: 0;
+  padding: 0.5rem 0;
+  padding-right: 0.6rem;
   margin-right: 0.5rem;
   border-radius: 1rem;
   cursor: pointer;
 }
-/* .fifthColor {
-  background-color: var(--fifth--color);
-  color: var(--second--color);
-  padding-left: 0;
-  padding: 0.3rem 0.6rem;
-  padding-left: 0;
-  margin: 0.5rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-} */
-/* .fifthColorSelected {
-  background-color: var(--fifth--color);
-  border: 2px solid var(--second--color);
-  color: var(--second--color);
-  padding-left: 0;
-  padding: 0.3rem 0.6rem;
-  padding-left: 0;
-  margin: 0.5rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-} */
-/* .fourthColor {
-  background-color: var(--fourth--color);
-  padding: 0.3rem 0.6rem;
-  padding-left: 0;
-  margin: 0.5rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
+
+@media (max-width: 1331px) {
+  .form {
+    min-height: 70dvh;
+  }
 }
-.fourthColorSelected {
-  background-color: var(--fourth--color);
-  border: 2px solid var(--fifth--color);
-  padding: 0.3rem 0.6rem;
-  padding-left: 0;
-  margin: 0.5rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-} */
 @media (max-width: 1025px) {
   .btn {
     align-self: center;
@@ -194,17 +159,18 @@
     padding-top: 0.5rem;
   }
 }
-@media (max-width: 470px) {
+@media (max-width: 540px) {
   .heading {
     font-size: 4rem;
     margin: 0;
   }
   .form {
-    width: 96%;
-    padding: 0 1rem;
+    width: 100%;
+    padding: 0.5rem 1.5rem;
   }
   .feelingInput {
-    padding: 0;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
   }
   .questions {
     font-weight: 600;
@@ -214,11 +180,26 @@
   }
   .textarea {
     font-size: 1.3rem;
-    height: 36rem;
+    height: 100%;
   }
   .btn {
     align-self: center;
-    margin: 0 0.5rem;
+    margin: 1 0.5rem;
+  }
+  .feeling,
+  .label {
+    display: inline-block;
+    padding: 0;
+    height: 3.4rem;
+    padding-right: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .feelingSelected,
+  .labelSelected {
+    display: inline-block;
+    padding: 0;
+    height: 3.5rem;
+    padding-right: 0.8rem;
     margin-bottom: 0.5rem;
   }
 }

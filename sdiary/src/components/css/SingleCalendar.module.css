@@ -15,7 +15,7 @@
     left: 1rem;
   }
 }
-@media (max-width: 470px) {
+@media (max-width: 540px) {
   .date {
     top: 3rem;
   }

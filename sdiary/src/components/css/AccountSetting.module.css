@@ -1,4 +1,5 @@
 .section {
+  min-height: 80dvh;
   height: 70rem;
   background-color: var(--second--color);
   border-radius: 3rem;
@@ -128,7 +129,15 @@
   display: block;
 }
 
-@media (max-width: 470px) {
+@media (max-width: 1331px) {
+  .section {
+    min-height: 70dvh;
+  }
+}
+@media (max-width: 540px) {
+  .input {
+    width: 100%;
+  }
   .section {
     width: 100%;
   }

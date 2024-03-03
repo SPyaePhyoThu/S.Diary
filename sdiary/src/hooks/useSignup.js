@@ -18,9 +18,8 @@ export const useSignup = () => {
     }
     try {
       const response = await fetch(
-        // "https://sdiary-backend.onrender.com/api/v1/user/signup",
         "https://s-diary-backend.vercel.app/api/v1/user/signup",
-        // "/api/v1/user/signup",
+
         {
           method: "POST",
           mode: "cors",

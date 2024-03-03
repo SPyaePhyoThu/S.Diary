@@ -10,11 +10,17 @@
   background-position: center;
   height: 100dvh;
   padding: 2rem 4rem;
+}
+.pageLogin {
   display: grid;
-  grid-template-rows: min-content 0.4fr 1fr min-content;
+  grid-template-rows: min-content 0.4fr 1fr 0.4fr min-content;
   box-sizing: border-box;
 }
-
+.pageSignup {
+  display: grid;
+  grid-template-rows: min-content 0.4fr 0.8fr 0.3fr;
+  box-sizing: border-box;
+}
 .topSection {
   display: grid;
   grid-template-columns: 1fr repeat(3, max-content);
@@ -54,7 +60,7 @@
 .form {
   display: grid;
   justify-items: center;
-  align-content: start;
+  align-content: center;
 }
 .label {
   display: block;
@@ -145,6 +151,15 @@
 
 @media (max-width: 1025px) {
   .page {
-    grid-template-rows: min-content 0.5fr 1fr min-content;
+    grid-template-rows: min-content 0.5fr 0.5fr 0.5fr min-content;
+  }
+}
+@media (max-width: 500px) {
+  .page {
+    padding: 2rem;
+  }
+  .heading,
+  .headingSignup {
+    align-self: center;
   }
 }

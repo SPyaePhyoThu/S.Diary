@@ -20,8 +20,6 @@ const Moments = () => {
   const clickHandler = async (e) => {
     if (user.data.user.role === "not user") return;
     const id = e.target.id;
-    console.log(id);
-    console.log(starredDiaries, "new");
     dispatch({ type: "UNSTAR_DIARIES", payload: id });
     reloadHandler();
 
@@ -62,64 +60,37 @@ const Moments = () => {
       <div className={classes.moments}>
         {starredDiaries &&
           starredDiaries.map((day) => (
-            <div id={day._id} key={day._id} className={classes.emptyBox}>
-              <li className={classes.item}>
-                <div className={classes.box1}>
-                  <span className={classes.time}>
-                    {new Date(day.createdAt).toLocaleDateString()}
-                  </span>
-                  <div className={classes.icon}>
-                    {day && (
-                      <Star
-                        classes={classes.star}
-                        onclick={clickHandler}
-                        id={day._id}
-                      />
-                    )}
-                  </div>
+            <li className={classes.item}>
+              <div className={classes.dateBar}>
+                <span className={classes.date}>
+                  {new Date(day.createdAt).toLocaleDateString()}
+                </span>
+                <div className={classes.icon}>
+                  {day && (
+                    <Star
+                      classes={classes.star}
+                      onclick={clickHandler}
+                      id={day._id}
+                    />
+                  )}
                 </div>
-                <p
-                  onClick={selectHandler}
-                  id={day._id}
-                  className={classes.details}
-                >
-                  {day.details}
-                </p>
+              </div>
+              <p
+                onClick={selectHandler}
+                id={day._id}
+                className={classes.details}
+              >
+                {day.details}
+              </p>
 
-                <div className={classes.box3}>
-                  {day.feeling.map((feel, index) => {
-                    if (
-                      feel.toLowerCase().trim() === "sad" ||
-                      feel.toLowerCase().trim() === "tired" ||
-                      feel.toLowerCase().trim() === "Angry"
-                    ) {
-                      return (
-                        <span key={index} className={classes.fourthColor}>
-                          {feel}
-                        </span>
-                      );
-                    } else if (
-                      feel.toLowerCase().trim() === "happy" ||
-                      feel.toLowerCase().trim() === "satisfied" ||
-                      feel.toLowerCase().trim() === "ok" ||
-                      feel.toLowerCase().trim() === "confident"
-                    ) {
-                      return (
-                        <span key={index} className={classes.secondColor}>
-                          {feel}
-                        </span>
-                      );
-                    } else {
-                      return (
-                        <span key={index} className={classes.fifthColor}>
-                          {feel}
-                        </span>
-                      );
-                    }
-                  })}
-                </div>
-              </li>
-            </div>
+              <div className={classes.feelingBox}>
+                {day.feeling.map((feel, index) => (
+                  <span key={index} className={classes.feelings}>
+                    {feel}
+                  </span>
+                ))}
+              </div>
+            </li>
           ))}
       </div>
     </div>
